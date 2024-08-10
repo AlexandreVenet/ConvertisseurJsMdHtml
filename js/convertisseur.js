@@ -378,7 +378,7 @@ class Convertisseur
 		
 		// Liens
 		// const liens = [...html.matchAll(/\[([^"`]+)\]\((.*?)\)|<code>(?:(?!<\/?code>).)*<\/code>/g)];
-		const liens = [...html.matchAll(/(?<!!)\[([^\[\]]+)\]\(([^\s)]+)(?:\s"([^"]+)")?\)|<code>(?:(?!<\/?code>).)*<\/code>/g)];
+		const liens = [...html.matchAll(/(?<!!)\[([^\[\]]+)\]\(([^\s)]+)(?:\s"([^"]+)")?(?:\s(_blank))?\)|<code>(?:(?!<\/?code>).)*<\/code>/g)];
 		for (let i = 0; i < liens.length; i++) 
 		{
 			const element = liens[i];
@@ -396,7 +396,8 @@ class Convertisseur
 				// Pas de mise en forme 
 				lienTitle = lienTitle.replace('*', '&ast;');
 			}
-			const a = `<a href="${lienHref}" title="${lienTitle}">${lienTexte}</a>`; // target="_blank" rel="noopener noreferrer" si besoin
+			const lienTarget = element[4] ? `target="${element[4]}"` : '';
+			const a = `<a href="${lienHref}" title="${lienTitle}" ${lienTarget}>${lienTexte}</a>`; // rel="noopener noreferrer" si besoin
 			html = html.replace(element[0], a);
 		}
 		

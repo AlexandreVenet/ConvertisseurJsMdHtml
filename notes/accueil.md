@@ -12,9 +12,11 @@ Du **texte** *bizarre* ***avec*** *mise* *en* ***forme*** **bizarre**.
 
 Un lien gras : **[lien](#)**
 
-Un lien autre [lien `toto`](# "bulle d'*aide*");
+Un lien autre [lien `toto`](# "bulle d'*aide*").
 
-Texte avec une image dedans ![image](media/32x32.png). Youpi !
+Différents liens : [tata](# _blank), [tata](# "toto" _blank).
+
+Texte avec une image dedans ![image](media/32x32.png). Youpi ! 
 
 Un lien avec une image dedans [![image](media/32x32.png)](# "bulle").
 
@@ -22,10 +24,11 @@ Texte avec chevrons <button type="button">cliquer</button>.
 
 Insérer un nom d'oeuvre, par exemple --Iliade-- d'Homère, grâce à des indicateurs personnels. Ci-après une citation avec source falcultative, le tout dans une balise `figure`.
 
-> une citation d'Aldous Huxley... voici voilà.
-> Un paragraphe de citation... 
+> Coucou ! 🤗
+> [...]
+> Texte avec chevrons <button type="button">cliquer</button>.
 
-!> Aldous Huxley, --[Brave New World](#)--
+!> Alexandre Venet, --[ConvertisseurJsMdHtml](https://alexandrevenet.github.io/ConvertisseurJsMdHtml)--
 
 Une autre citation, de moi, aussi dans `figure` mais cette fois sans `figcaption` :
 
