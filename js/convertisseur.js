@@ -160,20 +160,6 @@ class Convertisseur
 					const matchImage = /!\[([^\[\]]+)\]\(([^\s)]+)(?:\s"([^"]+)")?\)/g.exec(ligne);
 					if(matchImage)
 					{
-						// console.log(matchImage);
-						// v.1
-						/*
-						const title = matchImage[1];
-						let alt = 'Image';
-						if(matchImage[3])
-						{
-							alt = matchImage[3].replace('*', '&ast;');
-						}
-						this.html += `<figure><img src="./notes/${matchImage[2]}" alt="${alt}" title="${title}"/><figcaption>${matchImage[1]}</figcaption></figure>`;  // sans width et height
-						this.passerALaLigneSuivante();
-						this.etat = this.default;
-						*/
-						// v.2
 						const title = matchImage[1];
 						let alt = 'Image';
 						if(matchImage[3])
@@ -464,82 +450,6 @@ class Convertisseur
 				
 		return html;
 		
-		// Obtenir tous les <code>
-		// let balisesCode = [...html.matchAll(/`([^`]*)`/g)];
-		// <strong><em>
-		// let balisesStrongEm = [...html.matchAll(/\*\*\*(.*?)\*\*\*/g)];
-		// if(balisesStrongEm.length > 0)
-		// {
-		// 	for (let i = 0; i < balisesStrongEm.length; i++) 
-		// 	{
-		// 		const element = balisesStrongEm[i];
-		// 		const valeur = element[0];
-		// 		const indexDebut = element.index;
-		// 		const indexFin = indexDebut + valeur.length;
-		// 		// console.log(valeur, 'indexDebut : ' + indexDebut, 'indexFin : ' + indexFin);
-		// 		const contenuSeul = element[1];
-				
-		// 		for (let j = 0; j < balisesCode.length; j++) 
-		// 		{
-		// 			const baliseCodeValeur = balisesCode[j][0];
-		// 			const baliseCodeDebut = balisesCode[j].index;
-		// 			const baliseCodeFin = baliseCodeDebut + baliseCodeValeur.length;
-		// 			// console.log(baliseCodeValeur, baliseCodeDebut, baliseCodeFin);	
-		// 			if(baliseCodeDebut >= indexDebut && baliseCodeFin <= indexFin)
-		// 			{
-		// 				console.log('>> Code dans du em. Gérer le code.');
-						
-		// 				let codeHtml = balisesCode[j][1];
-		// 				// codeHtml = this.convertirEnEntities(codeHtml);
-		// 				codeHtml = `<code>${codeHtml}</code>`;
-						
-		// 				console.log('>> ' + codeHtml);
-						
-		// 			}
-		// 		}
-		// 		console.log("---");
-		// 	}
-		// }	
-		
-		// return html;
-		
-		// v.1
-		
-		// <a>
-		// html = html.replace(/\[([^"`]+)\]\((.*?)\)/g, '<a href="$2" title="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-		// // ne doit pas être entre backticks - non pris en charge
-		// // html = html.replace(/(?<!`[^`]*)\[([^"`]+)\]\((.*?)\)(?![^`]*`)/g, '<a href="$2" title="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-		
-		// // <strong><em>
-		// html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
-		// // ne doit pas être entre backticks - non pris en charge
-		// // html = html.replace(/(?<!`[^`]*)\*\*\*(.*?)\*\*\*(?![^`]*`)/g, '<strong><em>$1</em></strong>');
-		
-		// // <strong>
-		// html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-		// // ne doit pas être entre backticks - non pris en charge
-		// // html = html.replace(/(?<!`[^`]*)\*\*(.*?)\*\*(?![^`]*`)/g, '<strong>$1</strong>');
-		
-		// // <em>
-		// html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-		// // ne doit pas être entre backticks - non pris en charge
-		// // html = html.replace(/(?<!`[^`]*)\*(.*?)\*(?![^`]*`)/g, '<em>$1</em>');
-		
-		// // <code> 
-		// // html = html.replace(/`(.*?)`/g, '<code>$1</code>');
-		// // v.2
-		// let codes = [...html.matchAll(/`([^`]*)`/g)];
-		// if(codes.length > 0)
-		// {
-		// 	for (let i = 0; i < codes.length; i++) 
-		// 	{
-		// 		let e = codes[i][1]; // contenu sans les `
-		// 		e = this.convertirEnEntities(e);
-		// 		html = html.replace(codes[i][0], `<code>${e}</code>`);
-		// 	}
-		// }
-		
-		// return html;
 	}
 				
 	formaterTitre = (md) =>
@@ -563,27 +473,6 @@ class Convertisseur
 		}
 				
 		return html;
-		
-		// // <em>
-		// html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-		// // ne doit pas être entre backticks - non pris en charge 
-		// // html = html.replace(/(?<!`[^`]*)\*(.*?)\*(?![^`]*`)/g, '<em>$1</em>');
-		
-		// // <code> 
-		// // html = html.replace(/`(.*?)`/g, '<code>$1</code>');
-		// // v.2
-		// let codes = [...html.matchAll(/`([^`]*)`/g)];
-		// if(codes.length > 0)
-		// {
-		// 	for (let i = 0; i < codes.length; i++) 
-		// 	{
-		// 		let e = codes[i][1]; // contenu sans les `
-		// 		e = this.convertirEnEntities(e);
-		// 		html = html.replace(codes[i][0], `<code>${e}</code>`);
-		// 	}
-		// }
-		
-		// return html;
 	}
 	
 	convertirEnEntities = (texte) =>
