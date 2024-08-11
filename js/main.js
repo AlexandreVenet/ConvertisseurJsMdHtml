@@ -12,7 +12,7 @@ let chargerPage = async (chemin) =>
 		else
 		{
 			const texte = await p.text();
-			const html = new Convertisseur().analyser(texte);
+			const html = new Convertisseur().analyser(texte, './notes');
 			construirePage(html);
 		}
 	} 

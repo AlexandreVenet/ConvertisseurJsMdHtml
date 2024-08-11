@@ -46,6 +46,7 @@ class Convertisseur
 	
 	// img
 	figure;
+	debutCheminImages;
 	
 	// listes
 	listeRacine; 
@@ -55,9 +56,14 @@ class Convertisseur
 	tableHeader;
 	tableTemp;
 	
-	
-	analyser = (md) =>
+	analyser = (md, debutCheminImages) =>
 	{
+		this.debutCheminImages = debutCheminImages;
+		if(debutCheminImages.slice(-1) !== '/')
+		{
+			this.debutCheminImages += '/';
+		}
+		
 		// Le Markdown est structuré en lignes. Les récupérer en tableau
 		this.tableauMd = md.trim().split(this.newLine);
 		
@@ -166,7 +172,8 @@ class Convertisseur
 						{
 							alt = matchImage[3].replace('*', '&ast;');
 						}
-						this.figure = `<figure><img src="./notes/${matchImage[2]}" alt="${alt}" title="${title}"/>`;  // sans width et height
+						const srcSansRelatif = /^(?:\.\.\/)*(.*)/g.exec(matchImage[2]);
+						this.figure = `<figure><img src="${this.debutCheminImages}${srcSansRelatif[1]}" alt="${alt}" title="${title}"/>`;  // sans width et height
 						this.passerALaLigneSuivante();
 						this.etat = this.imageLegende;
 					}
@@ -369,9 +376,9 @@ class Convertisseur
 			// Est-ce un <code> ? Passer
 			if(/^<code>.*<\/code>$/g.test(element[0])) continue;
 			// C'est une image, alors formater
-			const src = element[2];
 			let altEtTitle = element[1].replace('*', '&ast;');
-			const img = `<img src="./notes/${src}" alt="${altEtTitle}" title="${altEtTitle}">`; // sans width et height
+			const srcSansRelatif = /^(?:\.\.\/)*(.*)/g.exec(element[2]);
+			const img = `<img src="${this.debutCheminImages}${srcSansRelatif[1]}" alt="${altEtTitle}" title="${altEtTitle}"/>`;  // sans width et height
 			
 			html = html.replace(element[0], img);
 		}

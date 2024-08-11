@@ -20,7 +20,7 @@ Texte avec une image dedans ![image](media/32x32.png). Youpi !
 
 Un lien avec une image dedans [![image](media/32x32.png)](# "bulle").
 
-Texte avec chevrons <button type="button">cliquer</button>.
+Texte HTML : <button type="button">cliquer</button>.
 
 Insérer un nom d'oeuvre, par exemple --Iliade-- d'Homère, grâce à des indicateurs personnels. Ci-après une citation avec source falcultative, le tout dans une balise `figure`.
 
@@ -40,29 +40,17 @@ Du code multi-ligne :
 ```
 code
 		ligne indentée de 2 tabulations
-```
-```
-entrée 
-{
-	Cette ligne est indentée et très longue pour afficher la barre de défilement horizontale. On peut naviguer avec SHIFT + molette souris...
 	
 	saut de ligne
 	
 	Les chevrons sont transformés en HTML entities : <button>
-}
-```
-
-Des images :
-
-```
-![Exemple d'une image au format SVG, 320x240px, suivie de sa légende, légende qui peut être sur plusieurs lignes.....](media/32x32.png "toto")
 ```
 
 L'image suivante doit être dans une balise `<figure>`.
 
 ![title](media/32x32.png "alt")
 
-!- Ce paragraphe est la légende de l'image précédente ; ceci est signifié par un préfixe personnel `!-`. Donc, il doit être converti en `<figcaption>` et placé dans la `<figure>` précédente. Si pas de paragraphe de ce type, alors pas de `<figcaption>`. Tout ceci pour autoriser la **mise en forme**. Exemple : [Github](https://alexandrevenet.github.io "Yo").
+!- Ce paragraphe est la légende de l'image précédente. Ceci autorise la **mise en forme**, [Lien d'exemple](https://alexandrevenet.github.io).
 
 Test avec du `code avec étoile *`.
 
@@ -71,6 +59,7 @@ Test avec du `code avec *plusieurs étoiles* **a** ***b*a** [qsd](qsd) <button>`
 Du texte ***strong-em avec du `code *em*` dedans***. Du `code avec du ***strong-em*** dedans`. Un lien en italique avec des étoiles [un <*lien*>](#).
 
 listes imbriquées
+
 1. toto
 	- a
 	- b
@@ -81,6 +70,7 @@ listes imbriquées
 	3. trois en **gras**
 
 Autre liste
+
 - a
 - b
 	1. 1
