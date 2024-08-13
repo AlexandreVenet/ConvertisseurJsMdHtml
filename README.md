@@ -45,6 +45,9 @@ La source d'une citation fait l'objet du préfixe personnalisé `!>`, ce qui pro
 
 ```md
 !> Aldous Huxley
+```
+
+```
 !> Aldous Huxley, --[Brave New World](https://www.huxley.net/bnw)--
 ```
 
