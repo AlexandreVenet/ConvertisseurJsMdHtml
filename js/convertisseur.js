@@ -338,6 +338,13 @@ class Convertisseur
 					break;
 			}
 		}
+		
+		// L'analyse est terminée mais on est resté sur une image ?
+		if(this.etat === this.image || this.etat === this.imageLegende)
+		{
+			this.figure += '</figure>';
+			this.html += this.figure;
+		}
 	
 		return this.html;
 	}

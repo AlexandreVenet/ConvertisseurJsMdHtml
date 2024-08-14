@@ -98,3 +98,4 @@ Tableau
 **a**|*b*|***c***
 x|y|z
 
+![title](media/32x32.png "alt")
