@@ -74,3 +74,17 @@ Les listes sont formées avec `-` pour produire `<ul>` ou `1.` pour produire `<o
 ## Tableaux
 
 Les tableaux sont pris en charge. La ligne de structure permet de vérifier que l'en-tête est valide, et si c'est le cas de commencer à générer la `<table>` ; ensuite, toute ligne ne correspondant pas à la structure termine la construction.
+
+## Blocs de code
+
+Un **bloc de code** Markdown converti en `<pre><code>` peut recevoir le nom du langage en première ligne. Alors, la balise `<code>` HTML contient un ***dataset*** nommé `langage` renseigné avec la chaîne trouvée, celle-ci étant nettoyée de caractères indésirables. Exemples :
+
+```
+Markdown : ```C#
+HTML : <pre><code data-langage="C#">
+```
+
+```
+Mardkown : ```C# qsd<script>(); qs
+HTML : <pre><code data-langage="C#qsdscriptqs">
+```

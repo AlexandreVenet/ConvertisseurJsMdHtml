@@ -46,6 +46,13 @@ code
 	Les chevrons sont transformés en HTML entities : <button>
 ```
 
+```C#
+private void MaFonction(string entree)
+{
+	// Fonction C#
+}
+```
+
 L'image suivante doit être dans une balise `<figure>`.
 
 ![title](media/32x32.png "alt")

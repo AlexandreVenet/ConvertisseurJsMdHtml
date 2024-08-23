@@ -41,8 +41,9 @@ class Convertisseur
 	carriageReturn = '\r';
 	newLine = '\n'; 
 	
-	// Contenu d'un <pre><code>
+	// pre code
 	contenuPreCode = '';
+	langagePreCode = '';
 	
 	// img
 	figure;
@@ -97,6 +98,17 @@ class Convertisseur
 					}
 					if(ligne.substring(0,3) === '```') // <pre><code>
 					{
+						const regexLangage = /[a-zA-Z0-9-#+]+/g;
+						const langageTrouve = ligne.match(regexLangage);
+						if(langageTrouve)
+						{						
+							this.langagePreCode = ` data-langage="${langageTrouve.join('')}"`;
+						}
+						else
+						{
+							this.langagePreCode = '';
+						}
+						
 						this.passerALaLigneSuivante();
 						this.etat = this.preCode;
 						break;
@@ -106,7 +118,7 @@ class Convertisseur
 						this.etat = this.image;
 						break;
 					}
-					const testMatchListe = ligne.match(/^(-|[0-9]+\.)\s/);
+					const testMatchListe = ligne.match(/^(-|[0-9]+\.)\s/); // listes
 					if(testMatchListe)
 					{
 						this.listeRacine = (testMatchListe[1] === '-') ? 'ul':'ol';
@@ -120,7 +132,7 @@ class Convertisseur
 						this.etat = this.tableEnTete;
 						break;
 					}
-					if(ligne.substring(0,2) === '> ')
+					if(ligne.substring(0,2) === '> ') // bloc de citation
 					{
 						this.html += '<figure><blockquote>';
 						this.etat = this.citation;
@@ -157,7 +169,7 @@ class Convertisseur
 					}
 					break;
 				case this.preCodeFin:
-					this.html += `<pre><code>${this.contenuPreCode}</code></pre>`;
+					this.html += `<pre><code${this.langagePreCode}>${this.contenuPreCode}</code></pre>`;
 					this.contenuPreCode = '';
 					this.passerALaLigneSuivante();
 					this.etat = this.default;
