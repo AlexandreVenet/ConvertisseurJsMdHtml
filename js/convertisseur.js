@@ -404,7 +404,8 @@ class Convertisseur
 		
 		// Liens
 		// const liens = [...html.matchAll(/\[([^"`]+)\]\((.*?)\)|<code>(?:(?!<\/?code>).)*<\/code>/g)];
-		const liens = [...html.matchAll(/(?<!!)\[([^\[\]]+)\]\(([^\s)]+)(?:\s"([^"]+)")?(?:\s(_blank))?\)|<code>(?:(?!<\/?code>).)*<\/code>/g)];
+		// const liens = [...html.matchAll(/(?<!!)\[([^\[\]]+)\]\(([^\s)]+)(?:\s"([^"]+)")?(?:\s(_blank))?\)|<code>(?:(?!<\/?code>).)*<\/code>/g)];
+		const liens = [...html.matchAll(/(?<!!)\[([^\[\]]+)\]\(([^\s]+)(?:\s"([^"]+)")?(?:\s(_blank))?\)|<code>(?:(?!<\/?code>).)*<\/code>/g)];
 		for (let i = 0; i < liens.length; i++) 
 		{
 			const element = liens[i];
